@@ -52,14 +52,3 @@ def training_flow():
 # the job
 if __name__ == "__main__":
     training_flow()
-
-
-
-
-
-
-    print(f"{stats_shows}")
-
-# the job
-if __name__ == "__main__":
-    training_flow()
