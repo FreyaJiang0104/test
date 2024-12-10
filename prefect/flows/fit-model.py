@@ -22,14 +22,14 @@ def schema_setup():
 @task(retries=2)
 def train_movies():
     """Train the model against movies data from the cloud warehouse"""
-    url = "https://us-central1-ba882-inclass-project.cloudfunctions.net/ml-movies-train"
+    url = "https://us-central1-ba882-inclass-project.cloudfunctions.net/mlops-movies-trainer"
     resp = invoke_gcf(url, payload={})
     return resp
 
 @task(retries=2)
 def train_shows():
     """Train the model against shows data from the cloud warehouse"""
-    url = "https://us-central1-ba882-inclass-project.cloudfunctions.net/ml-shows-train"
+    url = "https://us-central1-ba882-inclass-project.cloudfunctions.net/mlops-shows-trainer"
     resp = invoke_gcf(url, payload={})
     return resp
 
@@ -47,6 +47,17 @@ def training_flow():
 
     stats_shows = train_shows()
     print("The model training completed successfully")
+    print(f"{stats_shows}")
+
+# the job
+if __name__ == "__main__":
+    training_flow()
+
+
+
+
+
+
     print(f"{stats_shows}")
 
 # the job
